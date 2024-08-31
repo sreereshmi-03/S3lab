@@ -25,8 +25,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText username,password;
-    Button login;
+    EditText num1,num2;
+    Button add;
+    TextView res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,25 +40,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return insets;
         });
 
-        username = (EditText)findViewById(R.id.uname);
-        password = (EditText)findViewById(R.id.pass);
-        login = (Button)findViewById(R.id.logbtn);
+        num1 = (EditText)findViewById(R.id.num1);
+        num2 = (EditText)findViewById(R.id.num2);
+        add = (Button)findViewById(R.id.add);
+        res = (TextView)findViewById(R.id.result);
 
-        login.setOnClickListener(this);
+        add.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.logbtn){
-            String a = username.getText().toString();
-            String b = password.getText().toString();
+        if(view.getId()==R.id.add){
+            int a = Integer.parseInt(num1.getText().toString());
+            int b = Integer.parseInt(num2.getText().toString());
 
-            if (a.equals("nikhila") && b.equals("12345")){
-                Toast.makeText(this, "Login Successful" , Toast.LENGTH_SHORT).show();
-            }
-            else{
-                Toast.makeText(this, "Login Failed" , Toast.LENGTH_SHORT).show();
-            }
+            String result = String.valueOf(a + b);
+
+            res.setText("Result : " + result);
 
         }
     }
